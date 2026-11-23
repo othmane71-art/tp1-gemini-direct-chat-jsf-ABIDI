@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://localhost:8080/tp1-ABIDI-Othmane-1.0-SNAPSHOT/index.xhtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="./Conversation_new_role_soc_files/theme.css.xhtml"><link rel="stylesheet" href="./Conversation_new_role_soc_files/primeicons.css.xhtml"><link rel="stylesheet" href="./Conversation_new_role_soc_files/components.css.xhtml"><script src="./Conversation_new_role_soc_files/jquery.js.xhtml"></script><script src="./Conversation_new_role_soc_files/jquery-plugins.js.xhtml"></script><script src="./Conversation_new_role_soc_files/locale-fr.js.xhtml"></script><script src="./Conversation_new_role_soc_files/core.js.xhtml"></script><script src="./Conversation_new_role_soc_files/components.js.xhtml"></script><link rel="stylesheet" href="./Conversation_new_role_soc_files/mycsslayout.css.xhtml"><script src="./Conversation_new_role_soc_files/script.js.xhtml"></script><script>if(window.PrimeFaces){PrimeFaces.settings={locale:'fr_FR',viewId:'/index.xhtml',contextPath:'\/tp1\-ABIDI\-Othmane\-1.0\-SNAPSHOT',cookiesSecure:false,cookiesSameSite:'Strict',validateEmptyFields:true,considerEmptyStringNull:false};}</script>
+    <title>Conversation</title></head><body>
+
+        <!-- Les &eacute;ventuels messages d'erreur non li&eacute;s &agrave; un champ particulier sont affich&eacute;s ici en rouge -->
+<form id="form" name="form" method="post" action="http://localhost:8080/tp1-ABIDI-Othmane-1.0-SNAPSHOT/index.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="form" value="form">
+<label id="form:j_idt9" class="ui-outputlabel ui-widget ui-required" for="form:rolesysteme_editableInput"><span class="ui-outputlabel-label">Rôle de l'API : </span><span class="ui-outputlabel-rfi" aria-hidden="true">*</span></label>
+            <!-- La valeur choisie dans cette liste d&eacute;roulante sera affect&eacute;e
+            &agrave; la propri&eacute;t&eacute; systemRole du backing bean. Cette liste est fig&eacute;e (disabled)
+            d&egrave;s qu'une requ&ecirc;te a &eacute;t&eacute; envoy&eacute;e au serveur. --><div id="form:rolesysteme" class="ui-selectonemenu ui-widget ui-state-default ui-state-disabled" style="min-width: 241.067px;"><div class="ui-helper-hidden-accessible"><input id="form:rolesysteme_focus" name="form:rolesysteme_focus" type="text" autocomplete="off" aria-controls="form:rolesysteme_panel" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-required="true" aria-labelledby="form:j_idt9" disabled="disabled"></div><div class="ui-helper-hidden-accessible"><select id="form:rolesysteme_input" name="form:rolesysteme_input" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Rôle de l'API " disabled="disabled"><option value="You are a helpful assistant. You help the user to find the information they need.
+If the user type a question, you answer it.
+" data-escape="true">Assistant</option><option value="You are an interpreter. You translate from English to French and from French to English.
+If the user type a French text, you translate it into English.
+If the user type an English text, you translate it into French.
+If the text contains only one to three words, give some examples of usage of these words in English.
+" data-escape="true">Traducteur Anglais-Français</option><option value="Your are a travel guide. If the user type the name of a country or of a town,
+you tell them what are the main places to visit in the country or the town
+are you tell them the average price of a meal.
+" data-escape="true">Guide touristique</option><option value="You are a SOC (Security Operations Center) triage assistant for a junior analyst.
+When the user pastes a log line or describes a security event, answer in French
+with exactly this format:
+Catégorie : the type of event.
+Élément repéré : the exact words in the text that justify the category.
+Priorité : faible, moyenne ou élevée.
+Vérification proposée : one concrete check to do next.
+Conclusion : say that one log line alone cannot confirm an attack, and what is still unknown.
+If the text is not a security log or event, say so and ask for a log line.
+Never invent IP addresses, users or events that are not in the text.
+Keep the answer under 120 words.
+" selected="selected" data-escape="true">Analyste SOC (pré-triage)</option></select></div><input id="form:rolesysteme_editableInput" type="text" name="form:rolesysteme_editableInput" class="ui-selectonemenu-label ui-inputfield" tabindex="0" aria-label="Rôle de l'API " aria-required="true" aria-labelledby="form:j_idt9" disabled="disabled" value="Analyste SOC (pré-triage)"><div class="ui-selectonemenu-trigger ui-state-default"><span class="ui-icon ui-icon-triangle-1-s ui-c"></span></div><div id="form:rolesysteme_panel" class="ui-selectonemenu-panel ui-widget ui-widget-content ui-helper-hidden ui-shadow ui-input-overlay" tabindex="-1"><div class="ui-selectonemenu-items-wrapper" style="max-height:200px"></div></div></div>
+            <!-- Message d'erreur ici si l'utilisateur oublie d'indiquer un r&ocirc;le syst&egrave;me. -->
+
+            <!-- Si on veut commencer un nouveau chat avec, &eacute;ventuellement, un autre r&ocirc;le. -->  <input id="form:j_idt16" type="submit" name="form:j_idt16" value="Nouveau chat">
+
+            <!-- Les &eacute;l&eacute;ments de la page sont dispos&eacute;s en deux colonnes :
+            question et r&eacute;ponse &agrave; gauche et historique de la conversation &agrave; droite. --><table id="form:paneltotal">
+<tbody>
+<tr>
+<td class="topAligned"><table id="form:panelgauche">
+<tbody>
+<tr>
+<td><table id="form:questionetreponse">
+<tbody>
+<tr>
+<td>Question :
+                            <button type="button" onclick="copyToClipboard('question')">Copier question</button>
+                            <button type="button" onclick="toutEffacer()">Effacer question et réponse</button></td>
+</tr>
+<tr>
+<td><textarea id="form:question" name="form:question" cols="50" rows="5" title="Question" style="width: 433px; height: 45px;">Et si la même adresse a 40 échecs en 2 minutes ?</textarea></td>
+</tr>
+<tr>
+<td><input id="form:j_idt21" type="submit" name="form:j_idt21" value="Envoyer la question"></td>
+</tr>
+<tr>
+<td>Réponse :
+                            <button type="button" onclick="copyToClipboard('reponse')">Copier réponse</button></td>
+</tr>
+<tr>
+<td><textarea id="form:reponse" name="form:reponse" cols="50" rows="15" title="Réponse" style="width: 1181px; height: 109px;">Catégorie : Attaque par force brute / Tentative de compromission
+Élément repéré : "40 échecs en 2 minutes"
+Priorité : élevée
+Vérification proposée : Vérifier si l'adresse IP 192.168.1.50 a réussi à se connecter après ces tentatives ou si elle est déjà bloquée.
+Conclusion : Une seule ligne de journal ne suffit pas pour confirmer une attaque, et nous ignorons si le compte "admin" a été compromis ou s'il s'agit d'un test interne légitime.</textarea></td>
+</tr>
+<tr>
+<td>
+
+                        <!-- TP1 : interrupteur du mode debug (fin du panel questionetreponse) --></td>
+</tr>
+<tr>
+<td><div id="form:j_idt26" class="ui-outputpanel ui-widget" style="display:flex; align-items: center; gap: 10px">Mode debug : <div id="form:debugSwitch" class="ui-toggleswitch ui-widget mb-2 ui-toggleswitch-checked" aria-describedby="form:j_idt28"><div class="ui-helper-hidden-accessible"><input id="form:debugSwitch_input" name="form:debugSwitch_input" type="checkbox" autocomplete="off" aria-label="On" aria-checked="true" checked="checked"></div><div class="ui-toggleswitch-slider"><span class="ui-toggleswitch-handler"></span></div></div></div></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+
+                    <!-- TP1 : panel debug (juste apr&egrave;s questionetreponse, dans panelgauche) --></td>
+</tr>
+<tr>
+<td><table id="form:paneldebug">
+<tbody>
+<tr>
+<td>JSON envoyé dans la requête :
+                            <button type="button" onclick="copyToClipboard('jsonrequete')">Copier requête JSON</button></td>
+</tr>
+<tr>
+<td><textarea id="form:jsonrequete" name="form:jsonrequete" cols="50" rows="15" title="Requête JSON" readonly="readonly" style="width: 1383px; height: 674px;">{
+    "system_instruction": {
+        "parts": [
+            {
+                "text": "You are a SOC (Security Operations Center) triage assistant for a junior analyst.\nWhen the user pastes a log line or describes a security event, answer in French\nwith exactly this format:\nCatégorie : the type of event.\nÉlément repéré : the exact words in the text that justify the category.\nPriorité : faible, moyenne ou élevée.\nVérification proposée : one concrete check to do next.\nConclusion : say that one log line alone cannot confirm an attack, and what is still unknown.\nIf the text is not a security log or event, say so and ask for a log line.\nNever invent IP addresses, users or events that are not in the text.\nKeep the answer under 120 words.\n"
+            }
+        ]
+    },
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Failed password for invalid user admin from 192.168.1.50"
+                }
+            ]
+        },
+        {
+            "parts": [
+                {
+                    "text": "Catégorie : Tentative d'authentification échouée / Brute-force\nÉlément repéré : \"Failed password for invalid user admin from 192.168.1.50\"\nPriorité : moyenne\nVérification proposée : Consulter les journaux d'authentification pour voir si d'autres échecs proviennent de cette même IP 192.168.1.50.\nConclusion : Une seule ligne de journal ne suffit pas pour confirmer une attaque, et nous ignorons si cette tentative fait partie d'une attaque automatisée de plus grande envergure ou si elle a abouti à un succès ultérieur.",
+                    "thoughtSignature": "Eo4BCosBAWkUfRN/Cy2SC39t9p0HZvgW2No5yuRx3LmwYVycWThL0F2UcujIoGO42AMFyQGCC5Sjit54k/vNOIUIOB6q0Pkif87KhdJdKH7NOyBEOmNkBzddpWDAlpw1uYtGh0HxPKyrWeYSO9rl6lu/qFKu6wjCqnsQQy3ze0dUymARH+I3YyHzlGxaj9r5Ow=="
+                }
+            ],
+            "role": "model"
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Et si la même adresse a 40 échecs en 2 minutes ?"
+                }
+            ]
+        }
+    ]
+}</textarea></td>
+</tr>
+<tr>
+<td>JSON retourné dans la réponse :
+                            <button type="button" onclick="copyToClipboard('jsonreponse')">Copier réponse JSON</button></td>
+</tr>
+<tr>
+<td><textarea id="form:jsonreponse" name="form:jsonreponse" cols="50" rows="15" title="Réponse JSON" readonly="readonly" style="width: 1437px; height: 548px;">{
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Catégorie : Attaque par force brute / Tentative de compromission\nÉlément repéré : \"40 échecs en 2 minutes\"\nPriorité : élevée\nVérification proposée : Vérifier si l'adresse IP 192.168.1.50 a réussi à se connecter après ces tentatives ou si elle est déjà bloquée.\nConclusion : Une seule ligne de journal ne suffit pas pour confirmer une attaque, et nous ignorons si le compte \"admin\" a été compromis ou s'il s'agit d'un test interne légitime.",
+            "thoughtSignature": "Eo4BCosBAWkUfRMkh/epgi2xvB/TJhWQMbzGui9Xtn1M+f5dAaY76RNugKBulGnk3Caqwholuupov9aB0/VeL/p7VQcHqu+23/632oU7h2yit3yUHZD1TCZzNANVTYtbuFqJ0LBEDBhmxw+zrheF5iwyieCICPUF8IJ6oqRkJFbCurfUO6Zlqw7hNSjn8bv46g=="
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 346,
+    "candidatesTokenCount": 126,
+    "totalTokenCount": 472,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 346
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "E0IEa7TmM-f6xs0P0LqjuAo"
+}
+</textarea></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class="topAligned"><table id="form:paneldroit" style="vertical-align: top;">
+<tbody>
+<tr>
+<td>Conversation :
+                        <button type="button" onclick="copyToClipboard('conversation')">Copier conversation</button></td>
+</tr>
+<tr>
+<td><textarea id="form:conversation" name="form:conversation" cols="50" rows="30" title="Conversation entière" readonly="readonly" style="width: 458px; height: 595px;">== User:
+Failed password for invalid user admin from 192.168.1.50
+== Serveur:
+Catégorie : Tentative d'authentification échouée / Brute-force
+Élément repéré : "Failed password for invalid user admin from 192.168.1.50"
+Priorité : moyenne
+Vérification proposée : Consulter les journaux d'authentification pour voir si d'autres échecs proviennent de cette même IP 192.168.1.50.
+Conclusion : Une seule ligne de journal ne suffit pas pour confirmer une attaque, et nous ignorons si cette tentative fait partie d'une attaque automatisée de plus grande envergure ou si elle a abouti à un succès ultérieur.
+== User:
+Et si la même adresse a 40 échecs en 2 minutes ?
+== Serveur:
+Catégorie : Attaque par force brute / Tentative de compromission
+Élément repéré : "40 échecs en 2 minutes"
+Priorité : élevée
+Vérification proposée : Vérifier si l'adresse IP 192.168.1.50 a réussi à se connecter après ces tentatives ou si elle est déjà bloquée.
+Conclusion : Une seule ligne de journal ne suffit pas pour confirmer une attaque, et nous ignorons si le compte "admin" a été compromis ou s'il s'agit d'un test interne légitime.
+</textarea></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<input type="hidden" name="jakarta.faces.ViewState" id="j_id1:jakarta.faces.ViewState:0" value="-6950144104304693126:-4441109907781957514" autocomplete="one-time-code">
+</form>
+<div id="form:j_idt28" class="ui-tooltip ui-widget ui-tooltip-right" role="tooltip"><div class="ui-tooltip-arrow"></div><div class="ui-tooltip-text ui-shadow">Active ou non l'affichage du JSON sur les *prochaines* requêtes et réponses du LLM.</div></div></body></html>
